@@ -27,10 +27,10 @@ A production-grade API Management Layer built with Node.js and Express.
                                                 │
                                                 ▼
                               ┌─────────────────────────────────┐
-                              │   jsonplaceholder.typicode.com   │
-                              │                                  │
-                              │   /users  /posts  /todos         │
-                              │   /comments  /albums  /photos    │
+                              │   jsonplaceholder.typicode.com  │
+                              │                                 │
+                              │   /users  /posts  /todos        │
+                              │   /comments  /albums  /photos   │
                               └─────────────────────────────────┘
 ```
 
@@ -98,25 +98,25 @@ The gateway starts on **http://localhost:3000**
 
 ## Example API Calls
 
-### ✅ PartnerA — Get all users
+### PartnerA — Get all users
 ```bash
 curl -s http://localhost:3000/api/users \
   -H "x-api-key: partner-a-key-abc123" | head -c 300
 ```
 
-### ✅ PartnerA — Get a specific post
+### PartnerA — Get a specific post
 ```bash
 curl -s http://localhost:3000/api/posts/1 \
   -H "x-api-key: partner-a-key-abc123"
 ```
 
-### ✅ PartnerA — Get comments for a post
+### PartnerA — Get comments for a post
 ```bash
 curl -s http://localhost:3000/api/comments?postId=1 \
   -H "x-api-key: partner-a-key-abc123"
 ```
 
-### ✅ PartnerA — Create a new post
+### PartnerA — Create a new post
 ```bash
 curl -s -X POST http://localhost:3000/api/posts \
   -H "x-api-key: partner-a-key-abc123" \
@@ -124,33 +124,33 @@ curl -s -X POST http://localhost:3000/api/posts \
   -d '{"title": "My Post", "body": "Hello world", "userId": 1}'
 ```
 
-### ✅ PartnerB — Get todos
+### PartnerB — Get todos
 ```bash
 curl -s http://localhost:3000/api/todos \
   -H "x-api-key: partner-b-key-def456"
 ```
 
-### ❌ PartnerB — Try to access users (forbidden)
+### PartnerB — Try to access users (forbidden)
 ```bash
 curl -s http://localhost:3000/api/users \
   -H "x-api-key: partner-b-key-def456"
 # → 403 Forbidden
 ```
 
-### ❌ No API key (unauthorized)
+### No API key (unauthorized)
 ```bash
 curl -s http://localhost:3000/api/users
 # → 401 Unauthorized
 ```
 
-### ❌ Wrong API key
+### Wrong API key
 ```bash
 curl -s http://localhost:3000/api/users \
   -H "x-api-key: wrong-key"
 # → 401 Unauthorized
 ```
 
-### ❌ Suspended partner (PartnerD)
+### Suspended partner (PartnerD)
 ```bash
 curl -s http://localhost:3000/api/users \
   -H "x-api-key: partner-d-key-jkl000"
@@ -220,7 +220,7 @@ Log to a time-series store (InfluxDB / CloudWatch Metrics):
                     │                       │
              Gateway Instance 1    Gateway Instance 2
                     │                       │
-                    └──────── Redis ─────────┘
+                    └──────── Redis ────────┘
                           (shared state)
 ```
 Stateless gateway nodes + Redis for:
