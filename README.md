@@ -70,7 +70,7 @@ api-gateway/
 
 ### Install dependencies
 ```bash
-cd api-gateway
+cd system_design
 npm install
 ```
 
