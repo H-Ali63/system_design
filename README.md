@@ -10,20 +10,20 @@ A production-grade API Management Layer built with Node.js and Express.
                     ┌──────────────────────────────────────────────────────┐
   External          │                   API GATEWAY                        │
   Partners          │                                                      │
-                    │  ┌────────────┐  ┌──────────┐  ┌────────────────┐   │
-  PartnerA ────────►│  │ Request ID │  │  Logger  │  │  Body Parser   │   │
-  (x-api-key)       │  └─────┬──────┘  └────┬─────┘  └───────┬────────┘   │
+                    │  ┌────────────┐  ┌──────────┐  ┌────────────────┐    │
+  PartnerA ────────►│  │ Request ID │  │  Logger  │  │  Body Parser   │    │
+  (x-api-key)       │  └─────┬──────┘  └────┬─────┘  └───────┬────────┘    │
                     │        │               │                │            │
-  PartnerB ────────►│  ┌─────▼──────────────▼────────────────▼────────┐   │
-  (x-api-key)       │  │              Middleware Pipeline               │   │
-                    │  │                                                │   │
-  PartnerC ────────►│  │  1. Auth Middleware   (401 if invalid key)    │   │
-  (x-api-key)       │  │  2. Rate Limiter      (429 if over quota)     │   │
-                    │  │  3. Access Control    (403 if wrong route)     │   │
-                    │  │  4. Proxy Handler     (forward to upstream)   │   │
-                    │  └────────────────────────┬───────────────────────┘   │
-                    │                           │                           │
-                    └───────────────────────────┼───────────────────────────┘
+  PartnerB ────────►│  ┌─────▼──────────────▼────────────────▼────────┐    │
+  (x-api-key)       │  │              Middleware Pipeline             │    │
+                    │  │                                              │    │
+  PartnerC ────────►│  │  1. Auth Middleware   (401 if invalid key)   │    │
+  (x-api-key)       │  │  2. Rate Limiter      (429 if over quota)    │    │
+                    │  │  3. Access Control    (403 if wrong route)   │    │
+                    │  │  4. Proxy Handler     (forward to upstream)  │    │
+                    │  └────────────────────────┬─────────────────────┘    │
+                    │                           │                          │
+                    └───────────────────────────┼──────────────────────────┘
                                                 │
                                                 ▼
                               ┌─────────────────────────────────┐
